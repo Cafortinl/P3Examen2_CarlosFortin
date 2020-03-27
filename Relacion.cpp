@@ -2,6 +2,8 @@
 #include "Tupla.hpp"
 #include <string>
 #include <vector>
+#include <iomanip>
+#include <iostream>
 
 using namespace std;
 
@@ -51,4 +53,13 @@ void Relacion::addObjeto(Tupla x){
 
 Tupla Relacion::getObjeto(int x){
     return objetos[x];
+}
+
+void Relacion::getObjetosString(){
+    for(int i = 0;i < objetos.size();i++){
+        for(int j = 0;j < objetos[i].getAtributos().size();j++){
+            cout <<'['<< objetos[i].getAtributos()[j] << ']';
+        }
+        cout << endl;
+    }
 }

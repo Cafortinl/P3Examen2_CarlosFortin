@@ -1,7 +1,6 @@
 #include "Tupla.hpp"
 #include <string>
 #include <vector>
-#include <iomanip>
 #include <ctime>
 #include <cstdlib>
 #include <iostream>
@@ -16,6 +15,20 @@ Tupla::Tupla(vector<string> x){
     id = 1000 + rand()%9999;
     atributos = x;
     atributos.insert(atributos.begin(),to_string(id));
+}
+
+Tupla::Tupla(string x){
+    int pos = 0;
+    for(int i = 0;i < x.size();i++){
+        if(x[i] == ','){
+            atributos.push_back(x.substr(pos, i - pos));;
+            pos = i + 1;
+        }
+    }
+    if(x.size() - pos != 0){
+        atributos.push_back(x.substr(pos, x.size() - pos));
+    }
+    id = stoi(atributos[0]);
 }
 
 void Tupla::setID(int x){
@@ -42,9 +55,15 @@ string Tupla::getAtributo(int x){
     return atributos[x];
 }
 
-void Tupla::toString(){
-    for(int i;i < atributos.size();i++){
-        cout << atributos[i] << setw(3);
+string Tupla::toString(){
+    string salida = "";
+    if(atributos.empty()){
+        salida = "null";
+    }else{
+        for(int i = 0;i < atributos.size();i++){
+            salida += atributos[i];
+            salida += ',';
+        }
     }
-    cout << endl;
+    return salida;
 }

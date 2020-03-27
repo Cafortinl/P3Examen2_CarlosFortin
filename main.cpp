@@ -74,40 +74,36 @@ void leerRelaciones(fstream &r){
     }
 }
 
-void leerRelacion(string x){
-    string nombre = x + ".txt";
-    fstream rr(nombre, ios::in | ios::binary);
-    Relacion temp;
-    if(!rr.is_open()){
-        rr.open(nombre, ios::in | ios::binary);
-        rr.read(reinterpret_cast<char *>(&temp), sizeof(Relacion));
-        relaciones.push_back(temp);
-    }else{
-        rr.read(reinterpret_cast<char *>(&temp), sizeof(Relacion));
-        relaciones.push_back(temp);
+void leerTuplas(Relacion &x){
+    string nombre = x.getNombre() + ".txt";
+    string linea;
+    fstream rr(nombre, ios::in);
+    while (rr >> linea){
+        if (linea != "null"){
+            Tupla temp(linea);
+            x.addObjeto(temp);
+        }
     }
 }
 
-void escribirRelacion(Relacion x){
-    string nombre = x.getNombre() + ".cafl";
-    fstream rw(nombre, ios::out | ios::binary);
-    rw.write(reinterpret_cast<const char *>(&x), sizeof(Relacion));
+void escribirTuplas(Relacion x){
+    string nombre = x.getNombre() + ".txt";
+    fstream rw(nombre, ios::out);
+    for(int i = 0;i < x.getObjetos().size();i++){
+        rw << x.getObjetos()[i].toString() << endl;
+    }
 }
 
 void printRelacion(Relacion x){
     cout << "Nombre: " << x.getNombre() << endl;
-    cout << '[';
     for(int i = 0;i < x.getEncabezados().size();i++){
-        cout << x.getEncabezados()[i] << setw(3);
-        if(i == x.getEncabezados().size()-1)
-            cout << ']' << endl;
+        cout << '[' << x.getEncabezados()[i] << ']';
     }
-    if(x.getObjetos().empty()){
+    cout << endl;
+    if(x.getObjetos().size() == 0){
         cout << "Esta base aun no tiene objetos" << endl;
     }else{
-        for(int i = 0;i < x.getObjetos().size();i++){
-            x.getObjetos()[i].toString();
-        }
+        x.getObjetosString();
     }
 }
 
@@ -132,7 +128,6 @@ void opciones(int x){
             Relacion temp(nombre, encabezados);
             relaciones.push_back(temp);
             escribirRelaciones();
-            //escribirRelacion(temp);
             break;
         }
 
@@ -168,7 +163,7 @@ void opciones(int x){
                 }
                 Tupla temp(atributos);
                 relaciones[pos].addObjeto(temp);
-                escribirRelacion(relaciones[pos]);
+                escribirTuplas(relaciones[pos]);
             }else
                 cout << "El indice ingresado no es valido" << endl;
             break;
@@ -200,12 +195,11 @@ int main(){
     if(!rr){
         cout << "El archivo no existe" << endl;
     }else{
-        cout << "Entro" << endl;
         leerRelaciones(rr);
     }
-    if(!s_relaciones.empty()){
+    if(!relaciones.empty()){
         for(int i = 0;i < s_relaciones.size();i++){
-            //leerRelacion(s_relaciones[i]);
+            leerTuplas(relaciones[i]);
         }
     }
     int opcion = 0;

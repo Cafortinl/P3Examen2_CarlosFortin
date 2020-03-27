@@ -11,11 +11,12 @@ class Tupla{
     public:
         Tupla();
         Tupla(vector<string> x);
+        Tupla(string x);
         void setID(int x);
         int getID();
         void setAtributos(vector<string> x);
         vector<string> getAtributos();
         void addAtributo(string x);
         string getAtributo(int x);
-        void toString();
+        string toString();
 };
