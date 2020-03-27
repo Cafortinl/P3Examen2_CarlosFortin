@@ -8,9 +8,9 @@ using namespace std;
 Relacion::Relacion(){
 }
 
-Relacion::Relacion(string n, string r){
+Relacion::Relacion(string n, vector<string> r){
     nombre = n;
-    writeEncabezados(r);
+    encabezados = r;
 }
 
 void Relacion::setEncabezados(vector<string> x){

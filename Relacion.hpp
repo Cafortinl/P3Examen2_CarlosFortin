@@ -12,7 +12,7 @@ class Relacion{
         vector<Tupla> objetos;
     public:
         Relacion();
-        Relacion(string n, string r);
+        Relacion(string n, vector<string> r);
         void setEncabezados(vector<string> x);
         vector<string> getEncabezados();
         void addEncabezado(string x);
