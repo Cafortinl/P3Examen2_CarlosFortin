@@ -99,7 +99,7 @@ void printRelacion(Relacion x){
     for(int i = 0;i < x.getEncabezados().size();i++){
         cout << '[' << x.getEncabezados()[i] << ']';
     }
-    cout << endl;
+    cout << "------------------------" << endl;
     if(x.getObjetos().size() == 0){
         cout << "Esta base aun no tiene objetos" << endl;
     }else{
