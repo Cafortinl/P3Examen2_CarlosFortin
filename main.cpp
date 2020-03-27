@@ -99,6 +99,7 @@ void printRelacion(Relacion x){
     for(int i = 0;i < x.getEncabezados().size();i++){
         cout << '[' << x.getEncabezados()[i] << ']';
     }
+    cout << endl;
     cout << "------------------------" << endl;
     if(x.getObjetos().size() == 0){
         cout << "Esta base aun no tiene objetos" << endl;
@@ -136,6 +137,7 @@ void opciones(int x){
             for(int i = 0;i < relaciones.size();i++){
                 cout << i << ". " << relaciones[i].getNombre() << endl;
             }
+            cout << endl;
             cout << "Ingrese el indice de la relacion que desea ver: ";
             cin >> pos;
             if(pos <= relaciones.size()-1){
@@ -153,6 +155,7 @@ void opciones(int x){
             for(int i = 0;i < relaciones.size();i++){
                 cout << i << ". " << relaciones[i].getNombre() << endl;
             }
+            cout << endl;
             cout << "Ingrese el indice de la relacion que desea ingresarle una tupla: ";
             cin >> pos;
             if(pos <= relaciones.size()-1){
