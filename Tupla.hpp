@@ -17,4 +17,5 @@ class Tupla{
         vector<string> getAtributos();
         void addAtributo(string x);
         string getAtributo(int x);
+        void toString();
 };

@@ -23,5 +23,4 @@ class Relacion{
         vector<Tupla> getObjetos();
         void addObjeto(Tupla x);
         Tupla getObjeto(int x);
-        void writeEncabezados(string x);
 };

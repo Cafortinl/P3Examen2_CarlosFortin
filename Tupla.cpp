@@ -4,6 +4,7 @@
 #include <iomanip>
 #include <ctime>
 #include <cstdlib>
+#include <iostream>
 
 using namespace std;
 
@@ -39,4 +40,11 @@ void Tupla::addAtributo(string x){
 
 string Tupla::getAtributo(int x){
     return atributos[x];
+}
+
+void Tupla::toString(){
+    for(int i;i < atributos.size();i++){
+        cout << atributos[i] << setw(3);
+    }
+    cout << endl;
 }

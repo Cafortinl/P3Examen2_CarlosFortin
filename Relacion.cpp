@@ -52,7 +52,3 @@ void Relacion::addObjeto(Tupla x){
 Tupla Relacion::getObjeto(int x){
     return objetos[x];
 }
-
-void Relacion::writeEncabezados(string x){
-
-}
