@@ -1,1 +1,1 @@
-Contactos/ID,Nombre,Apodo,Edad,;
+Contactos/ID,Nombre,Apodo,Edad,/ID,Nombre,Apodo,Edad,;Juegos/ID,Nombre,Fecha,Puntuacion,;
